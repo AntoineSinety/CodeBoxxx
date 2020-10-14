@@ -1,13 +1,11 @@
 // add useContext
 import React, { Component } from "react";
-// import { authMethods } from '../firebase/firebaseAuth';
 import { connect } from 'react-redux';
 import { handleSignup } from "../redux/actions/auth";
 
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: '',
 };
 
 class Signup extends Component{
@@ -22,7 +20,6 @@ class Signup extends Component{
     event.preventDefault();
 
     console.log("handleSubmit")
-    // authMethods.signup(this.state.email, this.state.password)
     this.props.dispatch(handleSignup(this.state.email, this.state.password));
   }
 
@@ -32,15 +29,14 @@ class Signup extends Component{
     console.log(this.state)
   };
 
-  handleOnClick = () => {
-    console.log("handleOnClick")
+  goToSignin = () => {
+    this.props.history.push("/")
   }
 
     render(){
       const {
         email,
         password,
-        error,
       } = this.state;
 
         return (
@@ -51,8 +47,7 @@ class Signup extends Component{
                     <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
                     <input type="password" onChange={this.handleChange} name="password" placeholder='Password' value={password} />
                     <button className="submit">Créer mon compte</button>
-                    <a className="link-signup" href="#" onClick={this.handleOnClick}>Déjà un compte ?</a>
-                    {error != "" ? <p style={{ color: 'red' }}>{error}</p> : null}
+                    <a className="link-signup" href="#" onClick={this.goToSignin}>Déjà un compte ?</a>
                   </form>
                 </div>
             </div>

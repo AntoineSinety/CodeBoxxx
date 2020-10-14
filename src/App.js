@@ -1,14 +1,24 @@
 import React from 'react';
 // import logo from './logo.svg';
 import Signup from './components/Signup'
+import Signin from './components/Signin'
 import './App.css';
 import './style.css';
+
+import {
+  Switch,
+  Route,
+  BrowserRouter
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Signup />
-      {/* <header className="App-header">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Signin} />
+          <Route exact path='/signup' component={Signup} />
+          {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -22,7 +32,10 @@ function App() {
           Learn React
         </a>
       </header> */}
+        </Switch>
+      </BrowserRouter>
     </div>
+
   );
 }
 

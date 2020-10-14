@@ -18,7 +18,7 @@ export function handleSignup(email, password, setErrors, setToken) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         //make res asynchonous so that we can make grab the token before saving it.
         .then(async res => {
-            const token = await Object.entries(res.user)[5][1].b
+            const token = await Object.entries(res.user)[5][1].xa
             //grab token from local storage and set to state. 
             console.log(res)
 
@@ -28,7 +28,7 @@ export function handleSignup(email, password, setErrors, setToken) {
             })
         })
         .catch(err => {
-            setErrors(prev => ([...prev, err.message]))
+            console.log(err)
         })
     }
 }
