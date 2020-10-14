@@ -7,7 +7,7 @@ import { handleSignup } from "../redux/actions/auth";
 const INITIAL_STATE = {
   email: '',
   password: '',
-  errors: [],
+  error: '',
 };
 
 class Signup extends Component{
@@ -40,7 +40,7 @@ class Signup extends Component{
       const {
         email,
         password,
-        errors,
+        error,
       } = this.state;
 
         return (
@@ -48,12 +48,11 @@ class Signup extends Component{
                 <div className="wrapper-signup">
                   <form onSubmit={this.handleSubmit}>
                     <h2>Créer un compte</h2>
-                    {/* make inputs  */}
                     <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
                     <input type="password" onChange={this.handleChange} name="password" placeholder='Password' value={password} />
                     <button className="submit">Créer mon compte</button>
                     <a className="link-signup" href="#" onClick={this.handleOnClick}>Déjà un compte ?</a>
-                    {/* {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null} */}
+                    {error != "" ? <p style={{ color: 'red' }}>{error}</p> : null}
                   </form>
                 </div>
             </div>
