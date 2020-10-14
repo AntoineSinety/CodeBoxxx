@@ -4,6 +4,7 @@ import firebase from 'firebase'
 
 export const FIREBASE_SIGNIN = "FIREBASE_SIGNIN";
 export const FIREBASE_SIGNUP = "FIREBASE_SIGNUP";
+export const FIREBASE_LOGOUT = "FIREBASE_LOGOUT";
 
 
 
@@ -25,7 +26,7 @@ export function handleSignup(email, password, setErrors, setToken) {
 
             dispatch({
                 type: FIREBASE_SIGNUP,
-                token: token
+                token: token.g
             })
         })
         .catch(err => {
@@ -45,7 +46,7 @@ export function handleSignin(email, password) {
                 // await localStorage.setItem('tokenCodeBoxx', token)
                 dispatch({
                     type: FIREBASE_SIGNIN,
-                    token: token
+                    token: token.g
                 })
                 
                 // setToken(window.localStorage.token)
@@ -54,6 +55,15 @@ export function handleSignin(email, password) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
+            })
+    }
+}
+export function handleLogout() {
+    return function(dispatch, getState){
+        //change from create users to...
+        return dispatch({
+                type: FIREBASE_LOGOUT,
+                token: null
             })
     }
 }

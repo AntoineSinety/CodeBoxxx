@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            {this.props.token === null ?
+            {this.props.token == null ?
               <Route exact path="/" component={Signin} />
               : <Route exact path="/" component={Home} />}
             <Route exact path='/signup' component={Signup} />
@@ -49,7 +49,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    token: state.auth.g
+    token: state.auth
   };
 }
 

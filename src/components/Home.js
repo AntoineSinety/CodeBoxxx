@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 // import { firebaseGetData } from '../provider/DisplayProvider';
 import MainMenu from '../containers/MainMenu';
 
+import { connect } from 'react-redux';
+import { handleLogout } from "../redux/actions/auth";
+
 
 class Home extends Component{
+  constructor(props) {
+    super(props);
+    // this.state = {...INITIAL_STATE}
+  }
 
     // const history = useHistory();
 
@@ -33,6 +40,9 @@ class Home extends Component{
     //     })
     //   }
     // });
+    handleLogout = () =>{
+      this.props.dispatch(handleLogout());
+    };
 
     render(){
         return (
@@ -40,10 +50,16 @@ class Home extends Component{
               {/* <MainMenu/> */}
               <div>
                 salut
+                <button onClick={this.handleLogout}>FIREBASE_LOGOUT</button>
               </div>
             </div>
           );
     }
 }
 
-export default (Home);
+function mapStateToProps(state) {
+	return {
+        token: state.auth
+	};
+}
+export default connect(mapStateToProps)(Home);
