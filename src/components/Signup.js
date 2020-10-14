@@ -1,7 +1,8 @@
 // add useContext
 import React, { Component } from "react";
-import { authMethods } from '../firebase/firebaseAuth';
-
+// import { authMethods } from '../firebase/firebaseAuth';
+import { connect } from 'react-redux';
+import { handleSignup } from "../redux/actions/auth";
 
 const INITIAL_STATE = {
   email: '',
@@ -17,9 +18,12 @@ class Signup extends Component{
     this.state = {...INITIAL_STATE}
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
+
     console.log("handleSubmit")
-    authMethods.signup(this.state.email, this.state.password)
+    // authMethods.signup(this.state.email, this.state.password)
+    this.props.dispatch(handleSignup(this.state.email, this.state.password));
   }
 
   handleChange = (e) => {
@@ -57,5 +61,11 @@ class Signup extends Component{
     }
 }
 
+function mapStateToProps(state) {
+	return {
+		token: state.token,
 
-export default Signup;
+	};
+}
+
+export default connect(mapStateToProps)(Signup);

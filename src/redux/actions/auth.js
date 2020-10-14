@@ -1,7 +1,8 @@
 
+import firebaseconfig from '../../firebase/firebaseIndex'
 import firebase from 'firebase'
 
-export const FIREBASE_AUTH = "FIREBASE_AUTH";
+export const FIREBASE_SIGNIN = "FIREBASE_SIGNIN";
 
 
 
@@ -22,7 +23,7 @@ export function handleSignup(email, password, setErrors, setToken) {
             console.log(res)
 
             dispatch({
-                type: FIREBASE_AUTH,
+                type: FIREBASE_SIGNIN,
                 token: token
             })
         })
@@ -31,4 +32,3 @@ export function handleSignup(email, password, setErrors, setToken) {
         })
     }
 }
-
