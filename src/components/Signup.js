@@ -1,40 +1,55 @@
 // add useContext
-import React, { useContext, useCallback, Component } from "react";
-import { firebaseAuth } from "../provider/AuthProvider";
-import { withRouter, useHistory } from "react-router-dom";
+import React, { Component } from "react";
+import { authMethods } from '../firebase/firebaseAuth';
+
+
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  errors: [],
+};
 
 class Signup extends Component{
 
-    // const { handleSignup, inputs, setInputs, errors } = useContext(firebaseAuth);
-    // const history = useHistory();
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     console.log("handleSubmit");
-    //     //wait to signup
-    //     await handleSignup();
-    //     //push home
-    //     props.history.push("/");
-    // };
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     // console.log(inputs);
-    //     setInputs((prev) => ({ ...prev, [name]: value }));
-    // };
-    // const handleOnClick = useCallback(() => history.push('/'), [history]);
+  constructor(props) {
+    super(props);
+    this.state = {...INITIAL_STATE}
+  }
+
+  handleSubmit = () => {
+    console.log("handleSubmit")
+    authMethods.signup(this.state.email, this.state.password)
+  }
+
+  handleChange = (e) => {
+    console.log("handleChange")
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state)
+  };
+
+  handleOnClick = () => {
+    console.log("handleOnClick")
+  }
 
     render(){
+      const {
+        email,
+        password,
+        errors,
+      } = this.state;
+
         return (
             <div className="container-signup">
                 <div className="wrapper-signup">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={this.handleSubmit}>
                     <h2>Créer un compte</h2>
                     {/* make inputs  */}
-                    <input type="text" onChange={handleChange} name="email" placeholder='Email' value={inputs.email} />
-                    <input type="password" onChange={handleChange} name="password" placeholder='Password' value={inputs.password} />
+                    <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
+                    <input type="password" onChange={this.handleChange} name="password" placeholder='Password' value={password} />
                     <button className="submit">Créer mon compte</button>
-                    <a className="link-signup" href="#" onClick={handleOnClick}>Déjà un compte ?</a>
-                    {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null}
+                    <a className="link-signup" href="#" onClick={this.handleOnClick}>Déjà un compte ?</a>
+                    {/* {errors.length > 0 ? errors.map(error => <p style={{ color: 'red' }}>{error}</p>) : null} */}
                   </form>
                 </div>
             </div>
