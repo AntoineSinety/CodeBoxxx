@@ -1,0 +1,82 @@
+@bleuF: #1D2D60;
+@bleuC: #40CEE2;
+@gris: #F2F2F0;
+@jaune: #FFBC47;
+@rouge: #F65E5D;
+
+body{
+
+    /*
+    * Généric 
+    */
+    button{
+        display: inline-block;
+        line-height: normal;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-align: center;
+        cursor: pointer;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: .8em 1em;
+        color: rgba(0,0,0,.8);
+        border: transparent;
+        background-color: @gris;
+        text-decoration: none;
+        border-radius: 2px;
+        text-transform: uppercase;
+        
+    }
+
+    .container-signin,
+    .container-signup{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .wrapper-signin,
+        .wrapper-signup{
+            border: 4px solid @bleuF;
+            border-radius: 5px;
+            padding: 2em;
+            box-sizing: border-box;
+            form{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                h2{
+                    color: @bleuC;
+                    text-transform: uppercase;
+                    text-align: center;
+                }
+                input{
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid @bleuF;
+                    border-radius: 4px;
+                    resize: vertical;
+                    margin: 1em auto;
+                    box-sizing: border-box;
+                }
+                .submit{
+                    background-color: @bleuC;
+                    color: white;
+                    margin: 1em 0;
+                    box-sizing: border-box;
+                }
+                .link-signup{
+                    color: @bleuF;
+                    text-decoration: none;
+                    font-size: 12px;
+                    text-align: center;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

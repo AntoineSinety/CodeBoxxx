@@ -2,6 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import Signup from './components/Signup'
 import './App.css';
+import './style.css';
 
 function App() {
   return (
