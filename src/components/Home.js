@@ -1,9 +1,6 @@
-import React, { Component, useContext, useState } from 'react';
-import { firebaseAuth } from '../provider/AuthProvider';
-import { withRouter, useHistory, Redirect, Link } from 'react-router-dom';
+import React, { Component } from 'react';
 // import { firebaseGetData } from '../provider/DisplayProvider';
-import { _getArticlesOfUser } from '../api.js';
-import MainMenu from '../container/MainMenu';
+import MainMenu from '../containers/MainMenu';
 
 
 class Home extends Component{
@@ -40,22 +37,13 @@ class Home extends Component{
     render(){
         return (
             <div>
-              {!token ? <Redirect to="/" /> : console.log("z")}
-              <MainMenu/>
+              {/* <MainMenu/> */}
               <div>
-                <ul>
-                  {articles.map(article =>
-                    <li key={article.title}>
-                      <Link to="/create">{article.title}</Link>
-                      <div>{article.creationDate.toDate().toString()}</div>
-                      {/* <div>{article.code}</div> */}
-                    </li>
-                  )}
-                </ul>
+                salut
               </div>
             </div>
           );
     }
 }
 
-export default Home;
+export default (Home);

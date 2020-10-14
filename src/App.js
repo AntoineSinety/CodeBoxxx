@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import Signup from './components/Signup'
 import Signin from './components/Signin'
+import Home from './components/Home'
 import './App.css';
 import './style.css';
 
@@ -14,13 +15,15 @@ import {
   BrowserRouter
 } from "react-router-dom";
 
-class App extends Component{
+class App extends Component {
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Signin} />
+            {this.props.token === null ?
+              <Route exact path="/" component={Signin} />
+              : <Route exact path="/" component={Home} />}
             <Route exact path='/signup' component={Signup} />
             {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -45,9 +48,9 @@ class App extends Component{
 }
 
 function mapStateToProps(state) {
-	return {
-		token: state.auth.g
-	};
+  return {
+    token: state.auth.g
+  };
 }
 
 
