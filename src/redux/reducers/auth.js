@@ -1,8 +1,8 @@
-import { ARTICLES_LIST_COMPLETE } from '../actions/articles';
+import { FIREBASE_AUTH } from '../actions/auth';
 
 export default function (state = [], action) {
-	if (action.type === ARTICLES_LIST_COMPLETE) {
-		return action.articles;
+	if (action.type === FIREBASE_AUTH) {
+		return action.token;
 	}
 	return state;
 }
