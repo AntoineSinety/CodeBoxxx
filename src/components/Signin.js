@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { authMethods } from '../firebase/firebaseAuth';
+// import { authMethods } from '../firebase/firebaseAuth';
 import {withRouter} from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { handleSignin } from "../redux/actions/auth";
 
 
 const INITIAL_STATE = {
@@ -15,13 +18,16 @@ class Signin extends Component {
     this.state = {...INITIAL_STATE}
   }
 
-
-  handleSignin = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     //changed to handleSingin
     console.log('handleSignin')
     // made signup signin
-    authMethods.signin(this.state.email, this.state.password)
+    this.props.dispatch(handleSignin(this.state.email, this.state.password));
+
   }
+
+
   handleChange = (e) => {
     console.log("handleChange")
     this.setState({ [e.target.name]: e.target.value });
@@ -42,7 +48,7 @@ class Signin extends Component {
     return (
       <div className="container-signin">
         <div className="wrapper-signin">
-          <form onSubmit={this.handleSignin}>
+          <form onSubmit={this.handleSubmit}>
             <h2>Se connecter</h2>
             {/* make inputs  */}
             <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
@@ -56,4 +62,11 @@ class Signin extends Component {
   }
 }
 
-export default withRouter(Signin);
+
+function mapStateToProps(state) {
+	return {
+		token: state.auth.g
+	};
+}
+
+export default connect(mapStateToProps)(Signin);

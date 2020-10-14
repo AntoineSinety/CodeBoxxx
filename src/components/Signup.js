@@ -9,8 +9,6 @@ const INITIAL_STATE = {
 };
 
 class Signup extends Component{
-
-
   constructor(props) {
     super(props);
     this.state = {...INITIAL_STATE}
@@ -57,8 +55,7 @@ class Signup extends Component{
 
 function mapStateToProps(state) {
 	return {
-		token: state.token,
-
+        token: state.auth.g
 	};
 }
 
