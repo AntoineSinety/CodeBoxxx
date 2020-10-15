@@ -65,7 +65,7 @@ class Signin extends Component {
 
 function mapStateToProps(state) {
 	return {
-		token: state.auth
+		token: state.auth 
 	};
 }
 

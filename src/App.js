@@ -8,6 +8,8 @@ import './style.css';
 
 import { connect } from 'react-redux';
 
+import { checkLogin } from './redux/actions/auth';
+
 
 import {
   Switch,
@@ -16,14 +18,25 @@ import {
 } from "react-router-dom";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
+  componentDidMount(){
+    this.props.dispatch(checkLogin());
+  }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <Switch>
-            {this.props.token == null ?
+            {this.props.token != null ?
+              <Route exact path="/" component={Home} />
+              : 
               <Route exact path="/" component={Signin} />
-              : <Route exact path="/" component={Home} />}
+              }
             <Route exact path='/signup' component={Signup} />
             {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
