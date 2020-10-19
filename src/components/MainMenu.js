@@ -24,7 +24,7 @@ class MainMenu extends Component{
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/about">About</Link>
+                        <Link to ="/freecodecamp">freeCodeCamp</Link>
                     </li>
                     <li>
                         <Link to="/topics">Topics</Link>

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Signup from './containers/auth/Signup'
 import Signin from './containers/auth/Signin'
 import Home from './containers/Home'
+import CodeCampRss from './containers/CodeCampRss'
 import './App.css';
 import './style.css';
 
@@ -10,12 +11,7 @@ import { connect } from 'react-redux';
 
 import { checkLogin } from './redux/actions/auth';
 
-
-import {
-  Switch,
-  Route,
-  BrowserRouter
-} from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +34,8 @@ class App extends Component {
               <Route exact path="/" component={Signin} />
             }
             <Route exact path='/signup' component={Signup} />
+            <Route exact path="/freecodecamp" component={CodeCampRss}/>
+
 
           </Switch>
         </BrowserRouter>
