@@ -27,6 +27,10 @@ body{
         text-transform: uppercase;
         
     }
+    .errorLogin{
+        font-size: 12px;
+        color: red;
+    }
 
     .container-signin,
     .container-signup{
@@ -47,6 +51,7 @@ body{
                 display: flex;
                 flex-wrap: wrap;
                 flex-direction: column;
+                width: 300px;
                 h2{
                     color: @bleuC;
                     text-transform: uppercase;
@@ -78,5 +83,69 @@ body{
                 }
             }
         }
+    }
+
+    .main-menu{
+        width: 320px;
+        background-color: @bleuF;
+        padding: 40px;
+        box-sizing: border-box;
+        height: 100vh;
+        position: fixed;
+        
+        .site-brand{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 2em;
+            margin-top: -20px;
+            position: relative;
+            &:after{
+                content: '';
+                position: absolute;
+                bottom: -1em;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 2px;
+                border-radius: 3px;
+                width: 80%;
+                background-color: @rouge;
+            }
+            img{
+                width: 90px;
+                max-width: 100%;
+            }
+            span{
+                display: inline-block;
+                color: #fff;
+                font-family: Hammersmith One,sans-serif;
+                font-weight: 700;
+                margin-left: .5em;
+            }
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            a{
+                text-decoration: none;
+                color: @gris;
+                margin: 5px 0;
+                display: inline-block;
+                font-weight: bold;
+                transition: .3s all ease;
+                &:hover{
+                    color: @rouge;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .container-site{
+        width: calc(100% - 320px);
+        margin-left: 320px;
+        padding: 20px;
+        box-sizing: border-box;
     }
 }

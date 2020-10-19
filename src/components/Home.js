@@ -47,8 +47,8 @@ class Home extends Component{
     render(){
         return (
             <div>
-              {/* <MainMenu/> */}
-              <div>
+              <MainMenu/>
+              <div className="container-site">
                 salut
                 <button onClick={this.handleLogout}>FIREBASE_LOGOUT</button>
               </div>
@@ -59,7 +59,8 @@ class Home extends Component{
 
 function mapStateToProps(state) {
 	return {
-        token: state.auth
+    token: state.auth.tokenFirebase,
+    error: state.auth.errorFirebase,
 	};
 }
 export default connect(mapStateToProps)(Home);

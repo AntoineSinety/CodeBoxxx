@@ -36,7 +36,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               : 
               <Route exact path="/" component={Signin} />
-              }
+            }
             <Route exact path='/signup' component={Signup} />
 
           </Switch>
@@ -49,7 +49,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    token: state.auth
+    token: state.auth.tokenFirebase,
   };
 }
 

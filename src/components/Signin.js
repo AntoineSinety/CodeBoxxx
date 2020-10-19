@@ -53,6 +53,7 @@ class Signin extends Component {
             {/* make inputs  */}
             <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
             <input type="password" onChange={this.handleChange} name="password" placeholder='Password' value={password} />
+            { this.props.error && <p className="errorLogin">{this.props.error}</p> }
             <button className="submit" type="submit">se connecter</button>
             <a className="link-signup" href="#" onClick={this.goSignUp}>pas de compte?</a>
           </form>
@@ -65,7 +66,8 @@ class Signin extends Component {
 
 function mapStateToProps(state) {
 	return {
-		token: state.auth 
+    token: state.auth.tokenFirebase,
+    error: state.auth.errorSignin,
 	};
 }
 

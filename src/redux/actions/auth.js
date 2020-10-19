@@ -6,6 +6,8 @@ export const FIREBASE_SIGNIN = "FIREBASE_SIGNIN";
 export const FIREBASE_SIGNUP = "FIREBASE_SIGNUP";
 export const FIREBASE_LOGOUT = "FIREBASE_LOGOUT";
 export const CHECK_LOGIN = "CHECK_LOGIN";
+export const ERROR_SIGNUP = "ERROR_SIGNUP";
+export const ERROR_SIGNIN = "ERROR_SIGNIN";
 
 
 
@@ -21,17 +23,21 @@ export function handleSignup(email, password, setErrors, setToken) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         //make res asynchonous so that we can make grab the token before saving it.
         .then(async res => {
-            const token = await Object.entries(res.user)[5][1].xa
+            const token = await Object.entries(res.user)[5][1].b
             //grab token from local storage and set to state. 
-            console.log(res)
-
+            await localStorage.setItem('tokenCodeBoxx', token)
+            console.log(token);
             dispatch({
                 type: FIREBASE_SIGNUP,
                 token: token.g
             })
         })
-        .catch(err => {
-            console.log(err)
+        .catch(error => {
+            var errorMessage = error.message;
+            dispatch({
+                type: ERROR_SIGNUP,
+                errorSignup: errorMessage
+            })
         })
     }
 }
@@ -56,6 +62,10 @@ export function handleSignin(email, password) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
+                dispatch({
+                    type: ERROR_SIGNIN,
+                    errorSignin: errorMessage
+                })
             })
     }
 }

@@ -13,18 +13,26 @@ class Signup extends Component{
     super(props);
     this.state = {...INITIAL_STATE}
   }
+  componentDidMount() {
+    if (this.props.token != null){
+      this.props.history.push("/")
+    }
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
 
     console.log("handleSubmit")
     this.props.dispatch(handleSignup(this.state.email, this.state.password));
+
+
   }
 
   handleChange = (e) => {
     console.log("handleChange")
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
+    this.props.history.push("/")
+
   };
 
   goToSignin = () => {
@@ -44,6 +52,7 @@ class Signup extends Component{
                     <h2>Créer un compte</h2>
                     <input type="text" onChange={this.handleChange} name="email" placeholder='Email' value={email} />
                     <input type="password" onChange={this.handleChange} name="password" placeholder='Password' value={password} />
+                    { this.props.error && <p className="errorLogin">{this.props.error}</p> }
                     <button className="submit">Créer mon compte</button>
                     <a className="link-signup" href="#" onClick={this.goToSignin}>Déjà un compte ?</a>
                   </form>
@@ -55,7 +64,8 @@ class Signup extends Component{
 
 function mapStateToProps(state) {
 	return {
-        token: state.auth
+    token: state.auth.tokenFirebase,
+    error: state.auth.errorSignup,
 	};
 }
 
