@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import Signup from './components/Signup'
-import Signin from './components/Signin'
-import Home from './components/Home'
+import Signup from './containers/auth/Signup'
+import Signin from './containers/auth/Signin'
+import Home from './containers/Home'
 import './App.css';
 import './style.css';
 

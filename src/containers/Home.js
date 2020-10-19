@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { firebaseGetData } from '../provider/DisplayProvider';
-import MainMenu from '../containers/MainMenu';
+import MainMenu from '../components/MainMenu';
 
 import { connect } from 'react-redux';
 import { handleLogout } from "../redux/actions/auth";

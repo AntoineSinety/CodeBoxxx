@@ -1,7 +1,7 @@
 // add useContext
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { handleSignup } from "../redux/actions/auth";
+import { handleSignup } from "../../redux/actions/auth";
 
 const INITIAL_STATE = {
   email: '',
