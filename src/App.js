@@ -13,6 +13,7 @@ import { checkLogin } from './redux/actions/auth';
 
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import AddArticle from './containers/AddArticle';
+import ListingArticles from './containers/ListingArticles';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
             <Route exact path='/signup' component={Signup} />
             <Route exact path="/freecodecamp" component={CodeCampRss}/>
             <Route exact path="/addarticle" component={AddArticle}/>
+            <Route exact path="/articles" component={ListingArticles}/>
 
 
           </Switch>

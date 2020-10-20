@@ -30,6 +30,9 @@ class MainMenu extends Component{
                         <Link to="/addarticle">Ajouter un article</Link>
                     </li>
                     <li>
+                        <Link to="/articles">Articles</Link>
+                    </li>
+                    <li>
                         <Link to="/topics">Topics</Link>
                     </li>
                 </ul>

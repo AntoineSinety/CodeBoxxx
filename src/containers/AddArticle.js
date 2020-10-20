@@ -6,6 +6,8 @@ import MarkdownIt from "markdown-it";
 
 import 'react-markdown-editor-lite/lib/index.css';
 
+import firebase from 'firebase'
+
 
 class AddArticle extends Component {
     constructor(props) {
@@ -24,6 +26,16 @@ class AddArticle extends Component {
         e.preventDefault()
         console.log('en cours ...')
         // handleArticle(inputs.title, token)
+        var db = firebase.firestore();
+        db.collection('articles').doc(this.state.title).set({
+            title: this.state.title,
+            code: this.state.articleToSave,
+            // authorName: authorName,
+            creationDate: firebase.firestore.FieldValue.serverTimestamp()
+        }).catch(err => {
+            console.log(err);
+        })
+
     }
     handleChange = (e) =>{
         console.log("handleChange")
