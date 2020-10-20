@@ -5,6 +5,7 @@ import MainMenu from '../components/MainMenu';
 import { connect } from 'react-redux';
 import { getArticles } from "../redux/actions/listingArticles";
 
+import { Link } from "react-router-dom";
 
 
 
@@ -21,6 +22,9 @@ class ListingArticles extends Component{
       this.props.dispatch(getArticles());
       console.log('antoiiiiiiii', this.props.articles);
   }
+  slugify = ( title ) =>{
+      return title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''); 
+  }
 
     render(){
         return (
@@ -28,13 +32,13 @@ class ListingArticles extends Component{
               <MainMenu/>
               <div className="container-site">
                 
-                <h1>COUCOU</h1>
+                <h1>Test</h1>
 
-                 {
-                    this.props.articles.map( function(article, index) {
+                 { (this.props.articles) && this.props.articles.map((article, index) => {
                        return (
-                        <div key={article.index}>
-                            <h2>{article.title}</h2>
+                        <div key={article.id}>
+                            <Link to={`/articles/${article.id}`}>{article.detail.title}</Link>
+                            {/* <a href={"articles/" + this.slugify(article.detail.title)}></a> */}
                         </div>
                        )
                     })

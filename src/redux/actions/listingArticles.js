@@ -11,7 +11,7 @@ export function getArticles() {
         db.collection("articles").orderBy("creationDate", "desc").get().then((querySnapshot) => {
                 let articles = [];
                 querySnapshot.forEach(function(doc) {
-                    articles.push(doc.data())
+                    articles.push({id: doc.id, detail: doc.data()})
                 });
                 dispatch({
                     type: LISTING_ARTICLES,
